@@ -1,14 +1,26 @@
 ///// Curso////
 
+(Get)http://localhost:3000/api/cursos
+(POST)http://localhost:3000/api/cursos/create
+(Get)http://localhost:3000/api/cursos/1
+(Put)http://localhost:3000/api/cursos/1
+(Delete)http://localhost:3000/api/cursos/1
 
 
 ////Inscripcion////
 
-
-
+(Get)http://localhost:3000/api/estudiantes/create
+(POST)
+(Get)
+(Put)
+(Delete)
 
 
 
 ////Estudiante///////
 
-
+(Get)http://localhost:3000/api/estudiantes/create
+(POST)
+(Get)
+(Put)
+(Delete)
