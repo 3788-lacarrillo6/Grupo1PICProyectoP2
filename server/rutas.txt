@@ -9,11 +9,11 @@
 
 ////Inscripcion////
 
-(Get)http://localhost:3000/api/estudiantes/create
-(POST)
-(Get)
-(Put)
-(Delete)
+(Get)http://localhost:3000/api/estudiantes
+(POST)http://localhost:3000/api/estudiantes/create
+(Get)http://localhost:3000/api/estudiantes/1
+(Put)http://localhost:3000/api/estudiantes/1
+(Delete)http://localhost:3000/api/estudiantes/1
 
 
 
