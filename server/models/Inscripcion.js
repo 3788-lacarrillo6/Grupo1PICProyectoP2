@@ -10,9 +10,9 @@ class Inscripcion {
     static async getAll() {
         const result = await pool.query(`
             SELECT e.nombre || ' ' || e.apellido AS estudiante, c.nombre_curso
-            FROM inscripcion i
-            JOIN estudiante e ON i.id_estudiante = e.id_estudiante
-            JOIN curso c ON i.id_curso = c.id_curso
+            FROM inscripciones i
+            JOIN estudiantes e ON i.id_estudiante = e.id_estudiante
+            JOIN cursos c ON i.id_curso = c.id_curso
         `);
         return result.rows;
     }
@@ -20,8 +20,8 @@ class Inscripcion {
     static async getByEstudiante(id_estudiante) {
         const result = await pool.query(`
             SELECT c.*
-            FROM inscripcion i
-            JOIN curso c ON i.id_curso = c.id_curso
+            FROM inscripciones i
+            JOIN cursos c ON i.id_curso = c.id_curso
             WHERE i.id_estudiante = $1
         `, [id_estudiante]);
         return result.rows;
@@ -29,7 +29,7 @@ class Inscripcion {
 
     static async create(id_estudiante, id_curso) {
         await pool.query(
-            'INSERT INTO inscripcion (id_estudiante, id_curso) VALUES ($1, $2)',
+            'INSERT INTO inscripciones (id_estudiante, id_curso) VALUES ($1, $2)',
             [id_estudiante, id_curso]
         );
         return new Inscripcion(id_estudiante, id_curso);
@@ -37,7 +37,7 @@ class Inscripcion {
 
     static async delete(id_estudiante, id_curso) {
         const result = await pool.query(
-            'DELETE FROM inscripcion WHERE id_estudiante = $1 AND id_curso = $2 RETURNING *',
+            'DELETE FROM inscripciones WHERE id_estudiante = $1 AND id_curso = $2 RETURNING *',
             [id_estudiante, id_curso]
         );
         if (result.rows.length > 0) {

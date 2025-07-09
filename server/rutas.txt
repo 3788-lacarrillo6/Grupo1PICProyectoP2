@@ -7,7 +7,7 @@
 (Delete)http://localhost:3000/api/cursos/1
 
 
-////Inscripcion////
+/////Estudiante///////
 
 (Get)http://localhost:3000/api/estudiantes
 (POST)http://localhost:3000/api/estudiantes/create
@@ -17,10 +17,10 @@
 
 
 
-////Estudiante///////
 
-(Get)http://localhost:3000/api/estudiantes/create
-(POST)
-(Get)
-(Put)
-(Delete)
+////Inscripcion///
+(Get)http://localhost:3000/api/inscripciones
+(POST)http://localhost:3000/api/inscripciones/create
+(Get)http://localhost:3000/api/inscripciones/estudiante/3 ////**** Obtener todos los cursos inscritos por estudiante 
+(Delete)http://localhost:3000/api/inscripciones/3/2
+(3 = id_estudiante, 2 = id_curso)
