@@ -1,19 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './componets/Navbar';
 
 import Inicio from './componets/paguinas/Inicio';
-import Cursos from './componets/paguinas/Cursos';
-import Estudiantes from './componets/paguinas/Estudiantes';
-import Inscripciones from './componets/paguinas/Inscripciones';
+import { CursoPage } from './componets/cursos/CursoPage';
+import {EstudiantePage} from './componets/estudiantes/EstudiantePage';
+import {InscripcionesPage} from './componets/inscripciones/InsPague';
 import AcercaDe from './componets/paguinas/AcercaDe';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -22,9 +18,9 @@ function App() {
       <main className="main-content">
         <Routes>
           <Route path="/inicio" element={<Inicio />} />
-          <Route path="/cursos" element={<Cursos />} />
-          <Route path="/estudiantes" element={<Estudiantes />} />
-          <Route path="/inscripciones" element={<Inscripciones />} />
+          <Route path="/cursos" element={<CursoPage />} />
+          <Route path="/estudiantes" element={<EstudiantePage />} />
+          <Route path="/inscripciones" element={<InscripcionesPage />} />
           <Route path="/acerca-de" element={<AcercaDe />} /> 
         </Routes>
       </main>
