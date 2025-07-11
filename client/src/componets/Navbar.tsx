@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-         <Link to="/" className="flex items-center space-x-2 text-indigo-600 font-semibold text-lg">
+         <Link to="/inicio" className="flex items-center space-x-2 text-indigo-600 font-semibold text-lg">
         <AcademicCapIcon className="w-6 h-6 text-indigo-500" />
         <span>EduSystem</span>
       </Link>

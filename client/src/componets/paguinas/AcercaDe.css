@@ -1,0 +1,32 @@
+.acerca-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+}
+
+.acerca-container h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.acerca-container strong {
+  color: #111;
+}
+
+.acerca-container p {
+  margin: 0.5rem 0;
+}
+
+.acerca-container .quote {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #666;
+  font-size: 0.95rem;
+}
