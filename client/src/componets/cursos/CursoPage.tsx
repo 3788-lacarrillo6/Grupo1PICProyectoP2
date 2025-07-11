@@ -1,7 +1,7 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import type { Curso } from '../../interfaces/Curso';
-import { getCursos } from '../../services/cursoService';
+import { getCursos, deleteCurso } from '../../services/cursoService';
 import { CursoList } from './CursoList';
 import { CursoForm } from './CursoForm';
 
@@ -10,7 +10,7 @@ export const CursoPage: React.FC = () => {
   const [selectedCursos, setSelectedCursos] = useState<Curso | null>(null);
 
   useEffect(() => {
-    const fetchCurso= async () => {
+    const fetchCurso = async () => {
       try {
         const data = await getCursos();
         setCursos(data);
@@ -21,8 +21,18 @@ export const CursoPage: React.FC = () => {
     fetchCurso();
   }, []);
 
-  const handleDelete = (id: number) => {
-    setCursos(cursos.filter((curso) => curso.id_curso !== id));
+  const handleDelete = async (id: number) => {
+
+    try {
+      await deleteCurso(id); // Borra en la BD
+      setCursos(cursos.filter((curso) => curso.id_curso !== id)); // Actualiza vista
+    } catch (error) {
+      console.error("Error al eliminar estudiante:", error);
+      // Puedes mostrar un mensaje al usuario si lo deseas
+    }
+
+
+    
   };
 
   const handleEdit = (curso: Curso) => {

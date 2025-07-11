@@ -1,7 +1,7 @@
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import type { Estudiante } from '../../interfaces/Estudiante';
-import { getEstudiantes } from '../../services/estudianteService';
+import { getEstudiantes,deleteEstudiante } from '../../services/estudianteService';
 import { EstudianteList } from './EstudianteList';
 import { EstudianteForm } from './EstudianteForm';
 
@@ -21,9 +21,18 @@ export const EstudiantePage: React.FC = () => {
     fetchEstudiantes();
   }, []);
 
-  const handleDelete = (id: number) => {
-    setEstudiantes(estudiantes.filter((estudiante) => estudiante.id_estudiante !== id));
+  const handleDelete = async (id: number) => {
+    try {
+      await deleteEstudiante(id); // Borra en la BD
+      setEstudiantes(estudiantes.filter((e) => e.id_estudiante !== id)); // Actualiza vista
+    } catch (error) {
+      console.error("Error al eliminar estudiante:", error);
+      // Puedes mostrar un mensaje al usuario si lo deseas
+    }
   };
+
+
+
 
   const handleEdit = (estudiante: Estudiante) => {
     setSelectedEstudiante(estudiante);

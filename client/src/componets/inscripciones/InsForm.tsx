@@ -19,6 +19,7 @@ export const InscripcionForm: React.FC<Props> = ({ setInscripciones }) => {
   const [idCurso, setIdCurso] = useState<number>(0);
   const [inscripciones, setInscripcionesLocal] = useState<Incripcion[]>([]);
 
+  //Obtener la informacion para los menun desplegables
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,17 +45,27 @@ export const InscripcionForm: React.FC<Props> = ({ setInscripciones }) => {
     fetchData();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const yaInscrito = inscripciones.some(
-      (i) => i.id_estudiante === idEstudiante && i.id_curso === idCurso
+  // Verificar si ya está inscrito
+  const yaInscrito = (): boolean => {
+    return inscripciones.some(
+      (i) =>
+        Number(i.id_estudiante) === Number(idEstudiante) &&
+        Number(i.id_curso) === Number(idCurso)
     );
+  };
 
-    if (yaInscrito) {
-      alert("Este estudiante ya está inscrito en este curso.");
+
+
+  //Funcion para enviar la informacion
+  const handleSubmit = async (e: React.FormEvent) => {
+    
+    e.preventDefault();
+    console.log(yaInscrito);
+    if(yaInscrito()){
+      alert("Este usuario ya se encuentra matriculado en ese curso");
       return;
     }
+    
 
     const nuevaInscripcion: Incripcion = {
       id_estudiante: idEstudiante,
